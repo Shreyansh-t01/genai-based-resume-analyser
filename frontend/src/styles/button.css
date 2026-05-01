@@ -1,0 +1,19 @@
+.button{
+    border: none;
+    outline: none;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.primary-button{
+    background-color: rgb(237, 44, 44);
+    color: whitesmoke;
+    transition: all 0.3s ease-in-out;
+    margin: 0.5rem;
+}
+:hover .button{
+    transform: scale(1.04);
+}

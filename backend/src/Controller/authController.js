@@ -77,6 +77,7 @@ const loginUser = async  (req,res)=>{
             expiresIn:"1d"
         })
          res.cookie("token",token)
+
         res.status(201).json({
             message:"user has logged in successfully"
         })
@@ -105,8 +106,29 @@ const logoutUser = async (req,res)=>{
   
 }
 
+const getMe = async (req,res)=>{
+     
+    
+     
+const user = await userModel.findById(req.user.id)
+
+if(user){
+    res.status(200).json({
+        message:"user credentials are available",
+        username:user.username,
+        email:user.email,
+        
+    })
+}
+else{
+    res.status(400).json({
+        message:"user credentials not found"
+    })
+}
+}
 module.exports ={
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    getMe
 }
