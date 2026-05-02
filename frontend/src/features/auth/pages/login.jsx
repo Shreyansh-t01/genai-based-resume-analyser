@@ -10,23 +10,23 @@ const login = () => {
     const handleSubmit = (e)=>{
             e.preventDefault()
             console.log("submit handler is being called")
-            handleLogin({Email,Password})
+            handleLogin({email,password})
     }
  
-     const [Email, setEmail] = useState("")
-     const [Password,setPassword]  = useState("")
+     const [email, setEmail] = useState("")
+     const [password,setPassword]  = useState("")
 
      if(Loading){return (
         <main>
             <h1>loading....</h1>
         </main>
      )}
-
+   console.log(email)
   return (
    <main>
     <div className="form-container">
         <h1>login</h1>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
             <div className="input-group">
                 <label htmlFor="email">Email</label>
                 <input type="email" id='email' name='email' placeholder='enter email address' 
@@ -41,7 +41,7 @@ const login = () => {
                 />
             </div>
 
-            <button className='button primary-button' onSubmit={handleSubmit}>submit</button>
+            <button className='button primary-button' type='submit'>submit</button>
 
         </form>
         <p> Don't have an account ? <Link to={"/register"} >Register</Link>  </p>
