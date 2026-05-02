@@ -48,9 +48,9 @@ else {const isAlreadyUser  = await userModel.findOne({
 
         res.status(201).json({
         message:"user is registered succesfully",
-        userdetails:{
-            username:user.username,
-            
+        user:{
+            id:user._id,
+            username:user.username, 
             email:user.email
         }
 })
@@ -80,6 +80,7 @@ const loginUser = async  (req,res)=>{
 
         res.status(201).json({
             message:"user has logged in successfully"
+            
         })
     }
     else res.status(401).json({
@@ -100,7 +101,11 @@ const logoutUser = async (req,res)=>{
 
     res.clearCookie();
     res.status(201).json({
-        message:"user logged out successfully"
+        message:"user logged out successfully",
+         user:{
+            id:user._id,
+            email:user.email
+        }
     })
 
   

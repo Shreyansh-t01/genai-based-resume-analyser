@@ -1,8 +1,12 @@
 import React from 'react'
 import '../../../styles/button.css'
 import '../../../styles/auth.css'
+import {useNavigate} from 'react-router'
+import { Link } from 'react-router'
+
 
 const register = () => {
+    const navigate=useNavigate()
     const handleSubmit = (e)=>{
             e.preventDefault()
     }
@@ -29,6 +33,7 @@ const register = () => {
             <button className='button primary-button' onSubmit={handleSubmit}>submit</button>
 
         </form>
+        <p>Already have an account ? <Link to={"/login"} >login</Link>  </p>
     </div>
    </main>
   )
