@@ -1,18 +1,21 @@
 import React, { use, useState } from 'react'
 import '../../../styles/auth.css'
 import "../../../styles/button.css"
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 
 
 const login = () => {
-     const {Loading,handleLogin} = useAuth()
+    const navigate = useNavigate()
+     const {Loading,handleLogin,User} = useAuth()
     const handleSubmit = (e)=>{
             e.preventDefault()
-            console.log("submit handler is being called")
+           
             handleLogin({email,password})
+            
     }
- 
+     if(!Loading && User) navigate('/')
+
      const [email, setEmail] = useState("")
      const [password,setPassword]  = useState("")
 
@@ -21,7 +24,7 @@ const login = () => {
             <h1>loading....</h1>
         </main>
      )}
-   console.log(email)
+  
   return (
    <main>
     <div className="form-container">

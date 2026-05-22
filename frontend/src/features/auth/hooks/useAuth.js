@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router'
 
  export const useAuth =  ()=>{
           
-    const navigate = useNavigate()
+   
     const context = useContext(AuthContext)
     const {User,setUser,Loading,setLoading} = context
   
@@ -19,13 +19,14 @@ import { useNavigate } from 'react-router'
         setLoading(true)
         try{
         const data =  await login({email,password}) 
-        setUser(data.user)
+        console.log(data)
+       if(data) {setUser(data.user)
+        setLoading(false)
+       }
         }catch(err){
+            alert("login failed try again later")
+            setLoading(false)
             console.log(err)
-        }finally{
-         setLoading(false)
-
-        navigate('/')
         }
         
        
@@ -33,9 +34,14 @@ import { useNavigate } from 'react-router'
     }
     const handleRegister = async ({username,email,password})=>{
        setLoading(true)
-       const data = await register({email,password})
-       setUser(data.user)
-       setLoading(false)
+       const data = await register({email,password,username})
+       
+       console.log(data)
+       
+      if(data) {
+        setUser(data.user)
+        
+       setLoading(false)}
     }
 
     const handleLogout = async ()=>{

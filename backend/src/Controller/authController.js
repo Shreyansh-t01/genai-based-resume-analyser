@@ -9,7 +9,7 @@
 const registerUser =  async (req,res)=>{
   const {username,password,email} =req.body
 
-  console.log(req.body)
+  
 
   if(!username || !email || !password){
   
@@ -23,13 +23,13 @@ else {const isAlreadyUser  = await userModel.findOne({
         })
 
         if(isAlreadyUser){
-        res.status(400).json({
+        res.status(401).json({
             message:"user is already registered please login to proceed"
         })
         }
 
         const hash = await bcrypt.hash(password,10)
-        console.log(hash);
+        
 
         const user =  await userModel.create({
         username,
@@ -79,7 +79,12 @@ const loginUser = async  (req,res)=>{
          res.cookie("token",token)
 
         res.status(201).json({
-            message:"user has logged in successfully"
+            message:"user has logged in successfully",
+            user:{
+                 id:user._id,
+                 username:user.username,
+                 email:user.email
+            }
             
         })
     }
