@@ -11,4 +11,4 @@ authRouter.post("/login",loginUser)
 authRouter.get("/logout",logoutUser)
 authRouter.get("/getme",isUserSigned,getMe)
 
-module.exports = authRouter
+module.exports ={ authRouter}
