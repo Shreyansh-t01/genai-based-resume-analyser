@@ -46,6 +46,10 @@ const prepPlan = new mongoose.Schema({
 
 
 const interviewReportSchema = new mongoose.Schema({
+    user :{
+        type: String,
+        require:[true,"user id is required "]
+    },
 
     jobDescription:{
         type:String,
@@ -70,3 +74,5 @@ const interviewReportSchema = new mongoose.Schema({
         max:100
     }
 })
+
+module.exports = mongoose.model("interviewReport", interviewReportSchema)
