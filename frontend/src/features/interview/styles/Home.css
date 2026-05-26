@@ -1,0 +1,50 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.mainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+.main-form{
+    display:  flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid rgb(255, 141, 141);
+    padding-inline: 0.75rem;
+    padding-block: 1rem;
+    height: 30rem;
+    width: 50rem;
+}
+.resumeButtonContainer{
+    display: flex;
+    flex-direction: column;
+    align-self: self-start;
+    gap: 0.5rem;
+    height: 100%;
+    width: 100%;
+}
+.selfDescription{
+     
+    height: 100%;
+    width: 100%;
+     vertical-align: top;
+     line-height: normal;
+     resize: none;
+     padding: 1rem;
+    
+}
+.jobDescription{
+    height: 100%;
+    width: 100%;
+    line-height: normal;
+    vertical-align: top;
+    resize: none;
+    padding: 1rem;
+}
