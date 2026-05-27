@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useInterview } from '../hooks/useInterview'
+import { useParams } from 'react-router'
 
 
-const questionDay = ({item,index})=>{
+const questionCard = ({item,index})=>{
  
     const [open,setOpen] = useState(false)
 
@@ -41,7 +42,7 @@ const roadMap = ({day})=>{
                 <span className='NumberingofDay'>Day{day.day}</span>
                 <div className='task'>{day.focus}</div>
             </div> 
-            <ul className='roadmap-day__tasks'>
+            <ul className='taskList'>
             {day.tasks.map((task, i) => (
                 <li key={i}>
                     <span className='roadmap-day__bullet' />
@@ -59,21 +60,79 @@ const roadMap = ({day})=>{
 
 const Interview = () => {
 
-    const {Loading,Report,setReport}
+    const {Loading,Report,getReport} = useInterview()
+    const {interviewId} = useParams()
+    const [ mainInfo ,setMainInfo] = useState("technicalQuestions")
+
+    useEffect(()=>{
+        if(interviewId){
+            getReport({reportId:interviewId})
+        }
+    },interviewId)
+
+     
+
+
+
+    
+     if(loading || !Report){
+        return (
+            <div>
+                <h2> Loading your interview report...</h2>
+            </div>
+        )
+     }
+
+
 
   return (
     <div className='mainDiv'>
         <div className="fieldContainer">
-            <button className='button' name='technicalQuestions'>Technical Questions</button>
-            <button className='button ' name='behavioralQuestions'>Behavioral Questions</button>
-            <button className='button' name='preparationPlane'>Prep-Plan</button>
+            <button className='button' 
+            onClick={()=>{
+                setMainInfo("technicalQuestions")
+            }}
+            name='technicalQuestions'>Technical Questions</button>
+            <button className='button ' 
+            onClick={()=>{
+                setMainInfo("behavioralQuestions")
+            }}
+            name='behavioralQuestions'>Behavioral Questions</button>
+            <button className='button' 
+            onClick={()=>{
+                setMainInfo("prepPlan")
+            }}
+            name='preparationPlane'>Prep-Plan</button>
         </div>
         <div className="fieldInfoBox">
-            {/* question container div as per the given number of question or roadmap day wise */}
+            {mainInfo==="technicalQuestions" && (
+                Report.technicalQuestions.map((item,index)=>{
+                    <questionCard  item = {item} index = {index} key = {index}  />
+                })
+            )}
+             {mainInfo==="behavioralQuestions" && (
+                Report.behavioralQuestions.map((item,index)=>{
+                    <questionCard  item = {item} index = {index} key = {index}  />
+                })
+            )}
+            {mainInfo==="prepPlan" && (
+                Report.preparationPlan.map((day)=>{
+                    <roadMap day = {day} key = {day.day}/>
+                })
+            )}
         </div>
         <div className="skillGapContainer">
             <h3 className='titleskillgap'>skills Gaps</h3>
-            {/* divs will be added as per the number of element present inside skill gap array */}
+             <div className="skills">
+                {Report.skillGaps.map((gap,idx)=>(
+                    <div className= {`skillContainer  ${gap.severity}`}>
+                       { gap.skill}
+                    </div>
+                )
+                     
+
+                )}
+             </div>
         </div>
          
 
