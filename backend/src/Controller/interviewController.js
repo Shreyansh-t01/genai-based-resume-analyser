@@ -50,7 +50,42 @@ res.status(201).send({
 
    }
 }
+const getInterviewReportById = async (req,res)=>{
+      const interviewId = req.params
+
+      const report = await interviewReportModel.findone({_id:interviewId,user:req.user.id})
+      if(!report){
+res.send(501).send({
+   message: "report not found"
+})
+      }
+
+   res.status(201).send({
+      message:"report found",
+      interviewReport:report
+   })
+} 
+
+
+// get all reports 
+const getReports = async (req,res)=>{
+   
+    const reports = interviewReportModel.find({user:req.user.id}).sort({fieldName:-1})
+    if(!reports){
+      res.status(500).send({
+         message:"reports are not found"
+      })
+    }
+
+    res.status(201).send({
+      messgae:"reports are sent to the client",
+      interviewReports :reports
+    })
+
+
+    
+}
 
 module.exports = {
-   uploadHandler
+   uploadHandler , getInterviewReportById ,getReports
 }

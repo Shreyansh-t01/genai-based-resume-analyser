@@ -8,7 +8,9 @@ function App() {
  
   return (
      <AuthProvider >
-<RouterProvider router = {router}/> 
+       <InterviewContext>
+            <RouterProvider router = {router}/>
+       </InterviewContext>
      </AuthProvider>
     
   )
