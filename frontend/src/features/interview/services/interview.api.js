@@ -1,38 +1,41 @@
-const axios = require('axios')
+import axios from "axios"
 
 
-const generateReport = async ({selfDescription,jobDescription,resumeData})=>{
+ export const generateReport = async ({selfDescription,jobDescription,resumeData})=>{
+  console.log("resume data is coming to axios ",resumeData)
+  console.log("selfDescription :-",selfDescription)
+  console.log("job description :-",jobDescription)
 
-    const data = new formData()
-    data.append(selfDescription)
-    data.append(jobDescription)
-    data.append(resumeData)
+    const data = new FormData()
+    data.append("selfDescription",selfDescription)
+    data.append( "jobDescription", jobDescription)
+    data.append("resumeData",resumeData)
     
-  const response = await axios.post('http://localhost:3000/api/interview/upload',
-    {
-        body:data
+   const response = await axios.post('http://localhost:3000/api/interview/upload',
+    data,{
+      headers:{
+        "Content-Type" : "multipart/form-data"
+      }
     }
     
+   
   )
 
-  return response
+  console.log("axios called response",response)
+
+  return response.data
 }
 
-const getReportById = async ({reportId})=>{
+ export const getReportById = async ({reportId})=>{
     const report = await axios.get('http://localhost:3000/api/interview/reports/:reportId')
 
 
-    return report 
+    return report.data
 }
 
-const getAllReports = async ()=>{
+ export const getAllReports = async ()=>{
   const reports = await axios.get('http://localhost:3000/api/interview/getReports')
 
-  return reports
+  return reports.data
 }
 
-module.exports = {
-    getAllReports,
-    getReportById,
-    generateReport
-}

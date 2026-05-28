@@ -4,18 +4,22 @@ import '../../../styles/button.css'
 import { useNavigate } from 'react-router'
 import { useInterview } from '../hooks/useInterview'
 
-const navigate = useNavigate()
+
 const Home = () => {
-  
+    const navigate = useNavigate()
    const {Loading,Report ,Reports ,getReport ,getReportS ,getGeneratedReport}   = useInterview()
   const [resumeData, setresumeData] = useState(null)
   const [selfDescription, setselfDescription] = useState("")
   const [jobDescription, setjobDescription] = useState("")
 
-   const submitHandler = async ()=>{
+  
+   const submitHandler = async (e)=>{
+    e.preventDefault()
     const response = await  getGeneratedReport({resumeData,selfDescription,jobDescription})
+    
      navigate(`interview/${response._id}`)
    }
+  
     
 
    if(Loading){
@@ -29,7 +33,7 @@ const Home = () => {
   
   return (
     <div className='mainContainer'>
-      <form action="" className='main-form' encType='multipart/formdata' onSubmit={submitHandler}>
+      <form action="" className='main-form' encType='multipart/form-data' onSubmit={submitHandler}>
 
            <textarea type="text" className='selfDescription'  placeholder='enter self description here' onChange={(e)=>{
             setselfDescription(e.target.value)
@@ -38,7 +42,7 @@ const Home = () => {
                   <input type="file" 
                   accept='.pdf' 
                   onChange={(e)=>{
-                    setresume(e.target.files[0])
+                    setresumeData(e.target.files[0])
                   }}
                    />
                 <textarea type="text"

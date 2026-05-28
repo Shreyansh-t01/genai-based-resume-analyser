@@ -3,21 +3,25 @@ import { generateReport , getReportById , getAllReports } from "../services/inte
 import { InterviewContext } from "../interview.context";
 
 
- export const useInterview = async ()=>{
+ export const useInterview =  ()=>{
+   
     const context = useContext(InterviewContext)
 
     if(!context) {
-        throw new error("context is needed for this application to run")
+        console.log("interviewContext is not found")
     }
  
      const {Loading , setLoading ,Report ,setReport ,Reports ,setReports} = context
+     console.log("loading state",Loading)
+
+
  const getGeneratedReport = async ({selfDescription,jobDescription,resumeData})=>{
           
         setLoading(true)
 
-        const response  = null
+        let response  = null
         try{
-            response = generateReport({selfDescription,jobDescription,
+            response =  await generateReport({selfDescription,jobDescription,
                 resumeData
             })
             setReport(response.interviewReport)
@@ -26,6 +30,7 @@ import { InterviewContext } from "../interview.context";
         }finally{
             setLoading(false)
         }
+        
 
         return response.interviewReport
     }
@@ -34,7 +39,7 @@ import { InterviewContext } from "../interview.context";
      
     setLoading(true)
 
-    const response = null
+      let response = null
     try{
         response = getReportById({reportId})
         setReport(response.interviewReport)
@@ -50,7 +55,7 @@ import { InterviewContext } from "../interview.context";
 
  const getReports = async ()=>{
     setLoading(true)
-      const response = null
+      let response = null
     try{
         response = getAllReports ()
         setReports(response.interviewReports)
@@ -70,6 +75,6 @@ import { InterviewContext } from "../interview.context";
     getReports,
     getReport,
     getGeneratedReport
-
- }
+}
+ 
 }

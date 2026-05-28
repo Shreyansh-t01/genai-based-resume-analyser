@@ -8,8 +8,8 @@ import { createContext, useState } from "react";
      const [Reports , setReports] =useState([])
 
      return (
-        <InterviewContext.provider value={{Loading , setLoading , setReport ,Report , Reports ,setReports }}>
+        <InterviewContext.Provider value={{Loading , setLoading , setReport ,Report , Reports ,setReports }}>
            { children}
-        </InterviewContext.provider>
+        </InterviewContext.Provider>
      )
 }
