@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mainDiv{
+    height: 80vh;
+    width: 90vw;
+    display: flex ;
+    flex-direction: row;
+    gap: 2rem;
+    border: 1px solid  red;
+    border-radius: 2px;
+}
+.fieldContainer{
+    display: flex ;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-block: 3rem;
+    padding-inline: 1rem;
+    width: 22%;
+    height: 100%;
+}
+.fieldInfoBox{
+    display: flex ;
+    height: 100%;
+    width: 66%;
+    padding: 1rem;
+}
+.Heading{
+    font: bolder;
+    align-self: center;
+    text-decoration: dotted;
+}
+.questionContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border: 1.25px solid black;
+
+}
+.questionHeading{
+    display: flex ;
+    gap: 1.75rem;
+
+}
+.numberingOfQuestion{
+  font: bold;
+  text-decoration: dotted;
+
+}
+.question{
+    font: 600;
+
+}
+.detailsOfQuestion{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+.intention,.answer{
+    display: flex ;
+    gap: 1rem;
+}
+.header{
+    font: 700;
+    text-decoration: dotted;
+}
+
+
+.roadmapContainer{
+    display: flex ;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.headerContainer{
+    display: flex;
+    gap: 2rem;
+}
+.tasklist{
+    display: flex ;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+
+

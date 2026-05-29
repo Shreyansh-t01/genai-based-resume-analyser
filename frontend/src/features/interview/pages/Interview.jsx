@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useInterview } from '../hooks/useInterview'
 import { useParams } from 'react-router'
+import "../styles/Interview.css"
 
 
 const questionCard = ({item,index})=>{
@@ -15,7 +16,7 @@ const questionCard = ({item,index})=>{
             </div>
         
         {open && (
-            <div className='detailsofquestion'>
+            <div className='detailsOfQuestion'>
                     <div className="intention">
                     <div className="header">Intention:-</div>
                     <div className="response">item.intention</div> 
@@ -39,7 +40,7 @@ const roadMap = ({day})=>{
     return (
         <div className="roadmapContainer">
             <div className="headerContainer">
-                <span className='NumberingofDay'>Day{day.day}</span>
+                <span className='numberingOfDay'>Day{day.day}</span>
                 <div className='task'>{day.focus}</div>
             </div> 
             <ul className='taskList'>
@@ -75,7 +76,7 @@ const Interview = () => {
 
 
     
-     if(loading || !Report){
+     if(Loading || !Report){
         return (
             <div>
                 <h2> Loading your interview report...</h2>
@@ -106,19 +107,27 @@ const Interview = () => {
         </div>
         <div className="fieldInfoBox">
             {mainInfo==="technicalQuestions" && (
-                Report.technicalQuestions.map((item,index)=>{
+                <>
+                <div className='Heading'>Technical Questions</div>
+                {Report.technicalQuestions.map((item,index)=>{
                     <questionCard  item = {item} index = {index} key = {index}  />
-                })
+                })} </>
             )}
              {mainInfo==="behavioralQuestions" && (
-                Report.behavioralQuestions.map((item,index)=>{
+               <>
+               <div className="Heading">Behavioral Questions</div>
+               { Report.behavioralQuestions.map((item,index)=>{
                     <questionCard  item = {item} index = {index} key = {index}  />
-                })
+                })}
+               </>
             )}
             {mainInfo==="prepPlan" && (
-                Report.preparationPlan.map((day)=>{
+                <>
+                <div className="Heading">Preparation Plan</div>
+                {Report.preparationPlan.map((day)=>{
                     <roadMap day = {day} key = {day.day}/>
-                })
+                }) }
+                </>
             )}
         </div>
         <div className="skillGapContainer">

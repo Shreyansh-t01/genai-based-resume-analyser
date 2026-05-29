@@ -24,6 +24,7 @@ import { InterviewContext } from "../interview.context";
             response =  await generateReport({selfDescription,jobDescription,
                 resumeData
             })
+            console.log( "Your generated Report is " , response.interviewReport)
             setReport(response.interviewReport)
         }catch(error){
             console.log(error)

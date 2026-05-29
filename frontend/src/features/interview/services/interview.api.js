@@ -10,13 +10,13 @@ import axios from "axios"
     data.append("selfDescription",selfDescription)
     data.append( "jobDescription", jobDescription)
     data.append("resumeData",resumeData)
+
+   
     
    const response = await axios.post('http://localhost:3000/api/interview/upload',
     data,{
-      headers:{
-        "Content-Type" : "multipart/form-data"
-      }
-    }
+    withCredentials: true
+  }
     
    
   )

@@ -6,7 +6,7 @@ const interviewRouter = express.Router()
 const {uploadHandler, getInterviewReportById, getReports} = require('../Controller/interviewController')
 
 //POST ROUTE
-interviewRouter.post('/upload',isUserSigned , upload.single('resumePDF'),uploadHandler)
+interviewRouter.post('/upload',isUserSigned , upload.single('resumeData'),uploadHandler)
 
 // getinterviewreportBy id route
 
