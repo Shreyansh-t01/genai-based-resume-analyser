@@ -6,36 +6,41 @@
 }
 .background{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+    
+    flex-direction: column;
+    
+    min-height: 100vh;
+    
 }
 .mainDiv{
     
-    width: 90vw;
+    max-width: 90vw;
     display: flex ;
     flex-direction: row;
     gap: 2rem;
-    border: 1px solid  red;
+    border: 1px solid  black;
     border-radius: 1rem;
+    margin: 3rem auto;
+   
+   
     
 }
 .fieldContainer{
     display: flex ;
     flex-direction: column;
     gap: 1.25rem;
-    padding-block: 3rem;
+    padding-block: 1rem;
     padding-inline: 1rem;
     width: 22%;
     
-    border-right: 1.5px solid red;
+    border-right: 1.5px solid black;
 }
 .fieldInfoBox{
     display: flex ;
     height: 100%;
     width: 66%;
     padding: 1rem;
+    flex-direction: column;
     
 }
 .Heading{
@@ -47,7 +52,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    border: 1.25px solid rgb(255, 130, 130);
+    border: 1.25px solid black ;
     padding-inline:2rem ;
     padding-block: 1rem;
     border-radius: 1rem;
@@ -117,11 +122,42 @@
 .skillGapContainer{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     padding-block: 1rem;
-     border-left: 1.5px solid red;
+     border-left: 1.5px solid black;
      padding-inline: 2rem;
 }
+.titleSkillGap,.Heading{
+    background-color:rgb(65, 115, 255); 
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+}
+.skills{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.skill{
+    border: 3px solid rgb(198, 213, 255);
+    padding: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    color: black;
+}
+.medium{
+    background-color: rgb(253, 253, 166);
+}
+.low{
+    background-color: rgb(8, 196, 39);
+}
+.high{
+    background-color: rgb(250, 23, 23);
+}
+
 
 
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useInterview } from '../hooks/useInterview'
 import { useParams } from 'react-router'
 import "../styles/Interview.css"
+import Navbar from '../../Navbar/Navbar'
 
 
 const QuestionCard = ({item,index})=>{
@@ -88,9 +89,12 @@ const Interview = () => {
 
   return (
    <div className="background">
+     
+     <Navbar/>
 
      <div className='mainDiv'>
         <div className="fieldContainer">
+            <h2 className='Heading'> Sections</h2>
             <button className='button' 
             onClick={()=>{
                 setMainInfo("technicalQuestions")
@@ -141,10 +145,10 @@ const Interview = () => {
             )}
         </div>
         <div className="skillGapContainer">
-            <h3 className='titleskillgap'>skills Gaps</h3>
+            <h3 className='titleSkillGap'>skills Gaps</h3>
              <div className="skills">
                 {Report.skillGaps.map((gap,idx)=>(
-                    <div >
+                    <div className={`skill ${gap.severity}`}>
                        { gap.skill}
                     </div>
                 )

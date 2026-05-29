@@ -3,6 +3,7 @@ import '../styles/Home.css'
 import '../../../styles/button.css'
 import { useNavigate } from 'react-router'
 import { useInterview } from '../hooks/useInterview'
+import Navbar from '../../Navbar/Navbar'
 
 
 const Home = () => {
@@ -33,6 +34,7 @@ const Home = () => {
   
   return (
     <div className='mainContainer'>
+      <Navbar/>
       <form action="" className='main-form' encType='multipart/form-data' onSubmit={submitHandler}>
 
            <textarea type="text" className='selfDescription'  placeholder='enter self description here' onChange={(e)=>{

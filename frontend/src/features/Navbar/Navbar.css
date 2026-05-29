@@ -1,0 +1,21 @@
+.Navbar{
+    display: flex;
+    padding-inline: 3rem;
+    padding-block: 1rem;
+    
+    
+     height: 5rem;
+    
+    background-color:  rgb(65, 115, 255);
+    align-items: center;
+}
+.logoBox{
+    display: flex;
+    gap: 2rem;
+    
+    
+
+}
+h2{
+    align-self: center;
+}
