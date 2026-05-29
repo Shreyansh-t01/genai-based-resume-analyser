@@ -53,6 +53,7 @@ Rules:
   { "skill": "...", "severity": "low" }
 - Use this exact shape for preparationPlan:
   { "day": 1, "focus": "...", "tasks": ["...", "..."] }
+   and make sure that the task array should not be empty.
 
 Candidate Data:
 

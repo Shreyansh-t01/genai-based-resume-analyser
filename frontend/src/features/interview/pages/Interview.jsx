@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import "../styles/Interview.css"
 
 
-const questionCard = ({item,index})=>{
+const QuestionCard = ({item,index})=>{
  
     const [open,setOpen] = useState(false)
 
@@ -19,7 +19,7 @@ const questionCard = ({item,index})=>{
             <div className='detailsOfQuestion'>
                     <div className="intention">
                     <div className="header">Intention:-</div>
-                    <div className="response">item.intention</div> 
+                    <div className="response">{item.intention}</div> 
                     
                     </div>
                     <div className="answer">
@@ -36,7 +36,7 @@ const questionCard = ({item,index})=>{
     )
 }
 
-const roadMap = ({day})=>{
+const RoadMap = ({day})=>{
     return (
         <div className="roadmapContainer">
             <div className="headerContainer">
@@ -44,12 +44,12 @@ const roadMap = ({day})=>{
                 <div className='task'>{day.focus}</div>
             </div> 
             <ul className='taskList'>
-            {day.tasks.map((task, i) => (
+            { (!day.task) &&  (day.task.map((task, i) => (
                 <li key={i}>
                     <span className='roadmap-day__bullet' />
                     {task}
                 </li>
-            ))}
+            )))}
         </ul>
         </div>
     )
@@ -69,7 +69,7 @@ const Interview = () => {
         if(interviewId){
             getReport({reportId:interviewId})
         }
-    },interviewId)
+    },[interviewId])
 
      
 
@@ -87,7 +87,9 @@ const Interview = () => {
 
 
   return (
-    <div className='mainDiv'>
+   <div className="background">
+
+     <div className='mainDiv'>
         <div className="fieldContainer">
             <button className='button' 
             onClick={()=>{
@@ -107,34 +109,42 @@ const Interview = () => {
         </div>
         <div className="fieldInfoBox">
             {mainInfo==="technicalQuestions" && (
-                <>
-                <div className='Heading'>Technical Questions</div>
-                {Report.technicalQuestions.map((item,index)=>{
-                    <questionCard  item = {item} index = {index} key = {index}  />
-                })} </>
+                
+              <div className="Box">
+                  <div className='Heading'>Technical Questions</div>
+                {Report.technicalQuestions.map((item,index)=>(
+                    <QuestionCard  item = {item} index = {index} key = {index}  />
+                ))} 
+              </div>
             )}
              {mainInfo==="behavioralQuestions" && (
-               <>
-               <div className="Heading">Behavioral Questions</div>
-               { Report.behavioralQuestions.map((item,index)=>{
-                    <questionCard  item = {item} index = {index} key = {index}  />
-                })}
-               </>
+            
+              <div className="Box">
+                 <div className="Heading">Behavioral Questions</div>
+               { Report.behavioralQuestion.map((item,index)=>(
+                    <QuestionCard  item = {item} index = {index} key = {index}  />
+                ))}
+              </div>
+               
             )}
             {mainInfo==="prepPlan" && (
-                <>
-                <div className="Heading">Preparation Plan</div>
-                {Report.preparationPlan.map((day)=>{
-                    <roadMap day = {day} key = {day.day}/>
-                }) }
-                </>
+                
+                 <div className="Box">
+                     <div className="Heading">Preparation Plan</div>
+                <div className="planContainer">
+                    {Report.preparationPlan.map((day)=>(
+                    <RoadMap day = {day} key = {day.day}/>
+                )) }
+                </div>
+                 </div>
+                
             )}
         </div>
         <div className="skillGapContainer">
             <h3 className='titleskillgap'>skills Gaps</h3>
              <div className="skills">
                 {Report.skillGaps.map((gap,idx)=>(
-                    <div className= {`skillContainer  ${gap.severity}`}>
+                    <div >
                        { gap.skill}
                     </div>
                 )
@@ -147,6 +157,7 @@ const Interview = () => {
 
 
     </div>
+   </div>
   )
 }
 

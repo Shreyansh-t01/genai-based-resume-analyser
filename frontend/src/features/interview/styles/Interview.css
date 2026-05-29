@@ -2,15 +2,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
+}
+.background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 .mainDiv{
-    height: 80vh;
+    
     width: 90vw;
     display: flex ;
     flex-direction: row;
     gap: 2rem;
     border: 1px solid  red;
-    border-radius: 2px;
+    border-radius: 1rem;
+    
 }
 .fieldContainer{
     display: flex ;
@@ -19,13 +28,15 @@
     padding-block: 3rem;
     padding-inline: 1rem;
     width: 22%;
-    height: 100%;
+    
+    border-right: 1.5px solid red;
 }
 .fieldInfoBox{
     display: flex ;
     height: 100%;
     width: 66%;
     padding: 1rem;
+    
 }
 .Heading{
     font: bolder;
@@ -36,12 +47,22 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    border: 1.25px solid black;
+    border: 1.25px solid rgb(255, 130, 130);
+    padding-inline:2rem ;
+    padding-block: 1rem;
+    border-radius: 1rem;
 
+}
+.Heading{
+  font: bolder;
+  font-weight: 800;
+   font-size: larger;
 }
 .questionHeading{
     display: flex ;
     gap: 1.75rem;
+    font: bolder;
+   font-size: medium;
 
 }
 .numberingOfQuestion{
@@ -82,6 +103,24 @@
     display: flex ;
     flex-direction: column;
     gap: 0.25rem;
+}
+.prepPlan{
+    display: flex;
+    flex-direction: column;
+    
+}
+.Box{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.skillGapContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 1rem;
+     border-left: 1.5px solid red;
+     padding-inline: 2rem;
 }
 
 
