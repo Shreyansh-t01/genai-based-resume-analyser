@@ -98,17 +98,56 @@
 .roadmapContainer{
     display: flex ;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 1.25rem;
+    position: relative;
+    
 }
 .headerContainer{
     display: flex;
     gap: 2rem;
+   
+    align-items: center;
+    
+
+}
+.numberingOfDay{
+    background-color: rgb(103, 103, 104);
+    padding-inline: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: x-large;
+    font-weight: bold;
+}
+.numberingOfDay::after{
+    content: "";
+    width: 4px;
+    background-color: rgb(69, 67, 67);
+    
+    position: absolute;
+    left: 18%;
+    height: 100%;
+
+}
+.svg-icon{
+    color: bisque;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    position: absolute;
+    
+    left: 17%;
+    align-self: center;
 }
 .tasklist{
     display: flex ;
     flex-direction: column;
     gap: 0.25rem;
+    
 }
+.roadmap-day__bullet{
+    font-size: x-large;
+    align-self: center;
+}
+
+
 .prepPlan{
     display: flex;
     flex-direction: column;
@@ -140,12 +179,12 @@
     gap: 1.5rem;
 }
 .skill{
-    border: 3px solid rgb(198, 213, 255);
-    padding: 1.25rem;
+    
+    padding: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 1rem;
+    border-radius: 2rem;
     color: black;
 }
 .medium{
@@ -157,6 +196,8 @@
 .high{
     background-color: rgb(250, 23, 23);
 }
+
+
 
 
 

@@ -33,20 +33,36 @@ const Home = () => {
 
   
   return (
+    <>
+    <Navbar/>
     <div className='mainContainer'>
-      <Navbar/>
+      <div className="textContainer">
+        <h1 className='Headline'>Create Your <span className='interview'>Interview</span> Plan</h1>
+        <h5>let our AI help you get your desired job</h5>
+      </div>
+      
       <form action="" className='main-form' encType='multipart/form-data' onSubmit={submitHandler}>
 
            <textarea type="text" className='selfDescription'  placeholder='enter self description here' onChange={(e)=>{
             setselfDescription(e.target.value)
            }} />
            <div className="resumeButtonContainer">
-                  <input type="file" 
-                  accept='.pdf' 
+                  <div className="inputFileContainer">
+                    <div className="textinputfile">
+                      <h5>upload your resume in pdf format :-</h5>
+                    <label htmlFor="fileinput" className='fileLabel'>
+                      Upload file
+                    </label>
+                    </div>
+                    <input type="file" 
+                  accept='.pdf'
+                  className='fileInput' 
+                  id='fileinput'
                   onChange={(e)=>{
                     setresumeData(e.target.files[0])
                   }}
                    />
+                  </div>
                 <textarea type="text"
                  className='jobDescription' 
                   placeholder='enter job description here'
@@ -64,6 +80,7 @@ const Home = () => {
       </form>
 
     </div>
+     </>
   )
 }
 
